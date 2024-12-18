@@ -1,39 +1,45 @@
+
+<!DOCTYPE html>
 <html>
-<head>
-  <title>
-    Отправляем JSON-данные на сервер
-  </title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-</head>
-<body style="text-align:center;" id="body">
-
-
-<form name="person">
-  <input name="name" value="">
-  <input name="surname" value="">
-  <input type="submit" value="DDDDDDD">
+    <head>
+        <style>
+            
+        </style>
+            <script src="/scripts/snippet-javascript-console.min.js?v=2"></script>
+    </head>
+    <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<form id="register_form" action="https://script.google.com/macros/s/AKfycbzc2wO_wURn33_8gwsMgwjUOr_53YgyPopDIjGaBT6VGNW9P40OctByuWSfDXET_lrB4g/exec" method="post">
+  <input type="text" placeholder="Name" name="name" title="Up to 20 alphabetical characters">
+  <input type="email" placeholder="Email" name="email" title="Must be a valid email address">
+  <input type="password" placeholder="Password" name="password" title="Must be 8 or more characters long and contain at least one number and one uppercase letter">
+  <input type="text" placeholder="Homeadress" name="homeadress">
+  <input type="text" placeholder="Postnumber" name="postnumber">
+  <input type="text" placeholder="City" name="city">
+  <br>
+  <button value="Submit" type="submit">Register</button>
 </form>
+        <script type="text/javascript">
+            const serialize_form = form => JSON.stringify(
+  Array.from(new FormData(form).entries())
+       .reduce((m, [ key, value ]) => Object.assign(m, { [key]: value }), {})
+);
 
-<script>
-
-var object = {};
-var formData = new FormData(document.forms.person);
-
-formData.forEach(function(value, key){
-    object[key] = value;
+$('#register_form').on('submit', function(event) {
+  event.preventDefault();
+  const json = serialize_form(this);
+  console.log(json);
+  $.ajax({
+    type: 'POST',
+    url: 'https://script.google.com/macros/s/AKfycbzc2wO_wURn33_8gwsMgwjUOr_53YgyPopDIjGaBT6VGNW9P40OctByuWSfDXET_lrB4g/exec',
+    dataType: 'json',
+    data: json,
+    contentType: 'application/json',
+    success: function(data) {
+      alert(data)
+    }
+  });
 });
-var json = JSON.stringify(object);
-
-var xhr = new XMLHttpRequest();
-xhr.open("POST", 'https://script.google.com/macros/s/AKfycbzc2wO_wURn33_8gwsMgwjUOr_53YgyPopDIjGaBT6VGNW9P40OctByuWSfDXET_lrB4g/exec', true)
-xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
-// Отсылаем объект в формате JSON и с Content-Type application/json
-xhr.send(json);
-
-</script>
-
-    
-    
-</body>
+        </script>
+    </body>
 </html>
