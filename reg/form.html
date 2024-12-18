@@ -1,44 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="js/jquery.js"></script>
-    <script src="js/script.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="icon" href="">
+  <title>BSTest</title>
 </head>
+
 <body>
-    <form name="login_f" id=form>
-        <h3>login</h3>
-        <input type="text" id="name" name="name">
-        <br><h3>pass</h3>
-        <input type="text" id="email" name="email">
-        <input type="button" id="btn" value="Enter" onclick="input_v()">
-    </form>
+  <form action="https://script.google.com/macros/s/AKfycbzc2wO_wURn33_8gwsMgwjUOr_53YgyPopDIjGaBT6VGNW9P40OctByuWSfDXET_lrB4g/exec" method="POST" class="form">
+    <input type="text" name="name">
+    <button type="submit">Отправить</button>
+  </form>
 
-<script>
+  <script>
 
+const form = document.querySelector('.form');
+const button = form.querySelector('button');
 
-function push(login,password){
-    $.ajax({
-    method: "POST",
-    url: "https://script.google.com/macros/s/AKfycbzc2wO_wURn33_8gwsMgwjUOr_53YgyPopDIjGaBT6VGNW9P40OctByuWSfDXET_lrB4g/exec",
-    cache: false,
-    contentType:"application/json; charset=UTF-8;
-    dataType: "json",
-    success: function(result){
-        console.log(result)
-    }
-});}
+form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
 
+    fetch('https://script.google.com/macros/s/AKfycbzc2wO_wURn33_8gwsMgwjUOr_53YgyPopDIjGaBT6VGNW9P40OctByuWSfDXET_lrB4g/exec', {
+        method: 'POST',
+        body: new FormData(form),
+    })
+    .then(response => response.ok ? response.json() : response.status)
+})
 
-
-</script>
-
-
-
-
-
-    
+      
+  </script>
 </body>
 </html>
