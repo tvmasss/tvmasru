@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title>test</title>
+</head>
+
+<body>
+    <form id="formElem">
+      <input type="text" name="name" value="">
+      <input type="text" name="email" value="">
+      <input type="text" name="phone" value="">
+      <input type="text" name="viber" value="">
+      <input type="text" name="whatsapp" value="">
+      <input type="text" name="telegram" value="">
+        <input type="submit">
+    </form>
+    <div id="decoded"></div>
+    <button id="encode">Encode</button>
+    <div id="encoded"></div>
+</body>
+<script>
+    encode.onclick = async (e) => {
+        let response = await fetch('https://script.google.com/macros/s/AKfycbyjHa9HwNJ1yTU4tkmPKVnPxnZy_suMBVptimQfwwiD1O0cXJWej7LBnaI8mpO2mPlvig/exec/encode', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+        })
+
+        let text = await response.text(); // read response body as text
+        data = JSON.parse(text);
+        document.querySelector("#encoded").innerHTML = text;
+      //  document.querySelector("#encoded").innerHTML = `Name = ${data.name} <br/> 
+      //                                                  Email = ${data.email} <br/>
+                                                          Phone = ${data.phone} <br/>
+                                                          Viber = ${data.viber} <br/>
+                                                          Whatsapp = ${data.whatsapp} <br/>
+      //                                                  Telegram = ${data.telegram}`
+    };
+
+    formElem.onsubmit = async (e) => {
+      e.preventDefault();
+      var form = document.querySelector("#formElem");
+     // var form = document.forms[0];
+
+        data = {
+          name : form.querySelector('input[name="name"]').value,
+          email : form.querySelector('input[name="email"]').value,
+          phone : form.querySelector('input[name="phone"]').value,
+          viber : form.querySelector('input[name="viber"]').value,
+          whatsapp : form.querySelector('input[name="whatsapp"]').value,
+          telegram : form.querySelector('input[name="telegram"]').value
+        }
+
+        let response = await fetch('https://script.google.com/macros/s/AKfycbyjHa9HwNJ1yTU4tkmPKVnPxnZy_suMBVptimQfwwiD1O0cXJWej7LBnaI8mpO2mPlvig/exec/decode', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+        })
+
+        let text = await response.text(); // read response body as text
+        document.querySelector("#decoded").innerHTML = text;
+    };
+</script>
+</html>
