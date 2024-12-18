@@ -1,129 +1,71 @@
-<!doctype html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Форма связи</title>
-    <link rel="stylesheet" href="./style.css">
+  <title>
+    Отправляем JSON-данные на сервер
+  </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
-<body>
-
-
-
-
+<body style="text-align:center;" id="body">
+  <!-- заголовок -->
+  <h1> Простая форма для проверки работы JSON </h1>
+  <!-- делаем форму с полями ввода -->
+  <p>
+    <input type="text" id="name" placeholder="Ваше имя">
+    <input type="text" id="lastname" placeholder="и фамилия">
+    <!-- по нажатию на эту кнопку данные уйдут на сервер -->
+    <button onclick="sendJSON()">Проверить JSON</button>
+    <!-- а вот тут они появятся снова, но уже после обработки сервером -->
+  <p class="result" style="color:blue"></p>
+  </p>
 
 <script>
 
-
-"use strict";
-
-// ОЖИДАЕМ ЗАГРУЗКУ ВСЕЙ СТРАНИЦЫ
-window.onload = function () {
-
-
-
-
-
-    let url = 0;
-    let options = 1;
-
-    let promise = fetch(url, [options]);
-
-    promise;
-
-    // функция очистки
-    function cleanForm() {
-        // загоняем все поля в переменную
-        let clean = document.querySelectorAll('.clean');
-        //циклом проходимся по ним и обнуляем значение
-        for (let item of clean) {
-            item.value = '';
-        }
-    }
-
-    // Функция отправки формы fetch
-    async function postData(url= '', data = {}) {
-        const response = await fetch(url, {
-            method: "POST",
-            body: data
-        });
-        return await  response.json();
-    }
-
-    // отправка
-    let form = document.getElementById('form'); // переменная с формой
-    // при отправке формы любым способом
-    form.addEventListener('submit', function (event) {
-        // запрещаем стандартное действие
-        event.preventDefault();
-        // создаем объект новый
-        let data = new FormData(form);
-        // передаем в фукцию fetch данные и получаем результат
-        postData('https://script.google.com/macros/s/AKfycbzc2wO_wURn33_8gwsMgwjUOr_53YgyPopDIjGaBT6VGNW9P40OctByuWSfDXET_lrB4g/exec', data).then((data) => {
-            // обработка ответа от сервера
-            console.log(data);
-            if (data.error == '') {
-                alert(data.success);
-                cleanForm();
-            } else if (data.email !== '') {
-                alert(data.email);
-            } else {
-                alert(data.error);
-            }
-        })
-
-    })
-
+// когда придёт ответ на наше обращение к серверу, мы его обработаем здесь
+xhr.onreadystatechange = function () {
+  // если запрос принят и сервер ответил, что всё в порядке
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    // выводим то, что ответил нам сервер — так мы убедимся, что данные он получил правильно
+    result.innerHTML = this.responseText;
+  }
 };
+</script>
 
 
-
-   
+<!-- скрипт, который обработает нажатие на кнопку и отправит данные на сервер -->
+<script>
+  // эта функция сработает при нажатии на кнопку
+  function sendJSON() {
+    // с помощью jQuery обращаемся к элементам на странице по их именам
+    let name = document.querySelector('#name');
+    let lastname = document.querySelector('#lastname');
+    // а вот сюда мы поместим ответ от сервера
+    let result = document.querySelector('.result');
+    // создаём новый экземпляр запроса XHR
+    let xhr = new XMLHttpRequest();
+    // адрес, куда мы отправим нашу JSON-строку
+    let url = "https://script.google.com/macros/s/AKfycbzc2wO_wURn33_8gwsMgwjUOr_53YgyPopDIjGaBT6VGNW9P40OctByuWSfDXET_lrB4g/exec";
+    // открываем соединение
+    xhr.open("POST", url, true);
+    // устанавливаем заголовок — выбираем тип контента, который отправится на сервер, в нашем случае мы явно пишем, что это JSON
+    xhr.setRequestHeader("Content-Type", "application/json");
+    // когда придёт ответ на наше обращение к серверу, мы его обработаем здесь
+    xhr.onreadystatechange = function () {
+      // если запрос принят и сервер ответил, что всё в порядке
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // выводим то, что ответил нам сервер — так мы убедимся, что данные он получил правильно
+        result.innerHTML = this.responseText;
+      }
+    };
+    // преобразуем наши данные JSON в строку
+    var data = JSON.stringify({ "name": name.value, "lastname": lastname.value });
+    // когда всё готово, отправляем JSON на сервер
+    xhr.send(data);
+  }
 </script>
 
 
 
-
-
-
-   
-<div class="wrapper">
-    <header class="header">
-        <div class="container">
-            <div class="header__content">
-                Шапка сайта
-            </div>
-        </div>
-    </header>
-    <main class="content">
-        <div class="container">
-
-            <div class="form-block">
-                <h1>Форма связи</h1>
-                <form id="form">
-                    <input class="clean" type="text" name="name" placeholder="Имя">
-                    <input class="clean" type="email" name="email" placeholder="Email *">
-                    <textarea class="clean" rows="3" name="text" placeholder="Текст сообщения"></textarea>
-                    <button name="send" type="submit">Отправить</button>
-                </form>
-            </div>
-
-
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__content">
-                Подвал сайта
-            </div>
-        </div>
-    </footer>
-</div>
-
-
-
+    
+    
 </body>
 </html>
