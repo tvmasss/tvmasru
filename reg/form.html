@@ -18,6 +18,10 @@
     <div id="encoded"></div>
 </body>
 <script>
+
+    let form = document.forms[0];
+    xhr.open(form.method, form.action, true);
+    
     encode.onclick = async (e) => {
         let response = await fetch('https://script.google.com/macros/s/AKfycbyjHa9HwNJ1yTU4tkmPKVnPxnZy_suMBVptimQfwwiD1O0cXJWej7LBnaI8mpO2mPlvig/exec/encode', {
                 method: 'GET',
