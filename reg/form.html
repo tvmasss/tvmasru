@@ -7,28 +7,57 @@
     <title>Form to API</title>
 </head>
 <body>
-    <div class="container card card-color">
-        <form action="https://script.google.com/macros/s/AKfycbw773rvNY-1GrNrlUMVZ5IgG-0-jEQnT7m4eg40bxBj7IKlZfUIYnR0rlvHoKpGPImynA/exec" id="sampleForm">
-            <h2>Sample Form to JSON API</h2>
-            <div class="form-row">
-                <label for="FirstName">Name</label>
-                <input type="text" class="input-text input-text-block w-100" id="name" name="name">
-            </div>
-            <div class="form-row">
-                <label for="LastName">Email</label>
-                <input type="text" class="input-text input-text-block w-100" id="email" name="email">
-            </div>
-            <div class="form-row">
-                <label for="Email">Phone</label>
-                <input type="email" class="input-text input-text-block w-100" id="phone" name="phone">
-            </div>
-            <div class="form-row mx-auto">
-                <button type="submit" class="btn-submit" id="btnSubmit">
-                Submit
-                </button>
-            </div>
-        </form>
-      </div>
-      <script type="module" src="app.js"></script>
+<form action="/processjson" id="benderform">
+  <input type="hidden" name="name" value="Bender">
+  <input type="submit" value="TEST">
+</form>
+
+<script>
+
+
+document.getElementById('benderform').addEventListener('submit', submitForm);
+
+
+function submitForm(event) {
+    // Отменяем стандартное поведение браузера с отправкой формы
+    event.preventDefault();
+
+    // event.target — это HTML-элемент form
+    let formData = new FormData(event.target);
+
+    // Собираем данные формы в объект
+    let obj = {};
+    formData.forEach((value, key) => obj[key] = value);
+    
+    // Собираем запрос к серверу
+    let request = new Request(event.target.action, {
+        method: 'POST',
+        body: JSON.stringify(obj),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    
+    // Отправляем (асинхронно!)
+    fetch(request).then(
+        function(response) {
+            // Запрос успешно выполнен
+            console.log(response);
+            // return response.json() и так далее см. документацию
+        },
+        function(error) {
+            // Запрос не получилось отправить
+            console.error(error);
+        }
+    );
+
+    // Код после fetch выполнится ПЕРЕД получением ответа
+    // на запрос, потому что запрос выполняется асинхронно,
+    // отдельно от основного кода
+    console.log('Запрос отправляется');
+}
+    
+</script>
+    
 </body>
 </html>
