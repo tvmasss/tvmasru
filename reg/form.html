@@ -1,29 +1,129 @@
-<!DOCTYPE html>
-<html>
-   <head>
-      <title>Форма авторизации</title>
-   </head>
-   <body>
-      <form>
-         <input type="text" name="name" id="name" placeholder="name">
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Форма связи</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
 
-         <span onclick="login()">Войти</span>
-      </form>
-      <div id="result"></div>
-      <script>
-         function login(){
-            var name = document.getElementById('name').value;
 
-            fetch('https://script.google.com/macros/s/AKfycbzc2wO_wURn33_8gwsMgwjUOr_53YgyPopDIjGaBT6VGNW9P40OctByuWSfDXET_lrB4g/exec').then(
-               response => {
-                  return response.text();
-               }
-            ).then(
-               text => {
-                  document.getElementById('result').innerHTML = text;
-               }
-            );
-         }
-      </script>
-   </body>
+
+
+
+<script>
+
+
+"use strict";
+
+// ОЖИДАЕМ ЗАГРУЗКУ ВСЕЙ СТРАНИЦЫ
+window.onload = function () {
+
+
+
+
+
+    let url = 0;
+    let options = 1;
+
+    let promise = fetch(url, [options]);
+
+    promise;
+
+    // функция очистки
+    function cleanForm() {
+        // загоняем все поля в переменную
+        let clean = document.querySelectorAll('.clean');
+        //циклом проходимся по ним и обнуляем значение
+        for (let item of clean) {
+            item.value = '';
+        }
+    }
+
+    // Функция отправки формы fetch
+    async function postData(url= '', data = {}) {
+        const response = await fetch(url, {
+            method: "POST",
+            body: data
+        });
+        return await  response.json();
+    }
+
+    // отправка
+    let form = document.getElementById('form'); // переменная с формой
+    // при отправке формы любым способом
+    form.addEventListener('submit', function (event) {
+        // запрещаем стандартное действие
+        event.preventDefault();
+        // создаем объект новый
+        let data = new FormData(form);
+        // передаем в фукцию fetch данные и получаем результат
+        postData('https://script.google.com/macros/s/AKfycbzc2wO_wURn33_8gwsMgwjUOr_53YgyPopDIjGaBT6VGNW9P40OctByuWSfDXET_lrB4g/exec', data).then((data) => {
+            // обработка ответа от сервера
+            console.log(data);
+            if (data.error == '') {
+                alert(data.success);
+                cleanForm();
+            } else if (data.email !== '') {
+                alert(data.email);
+            } else {
+                alert(data.error);
+            }
+        })
+
+    })
+
+};
+
+
+
+   
+</script>
+
+
+
+
+
+
+   
+<div class="wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                Шапка сайта
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <div class="container">
+
+            <div class="form-block">
+                <h1>Форма связи</h1>
+                <form id="form">
+                    <input class="clean" type="text" name="name" placeholder="Имя">
+                    <input class="clean" type="email" name="email" placeholder="Email *">
+                    <textarea class="clean" rows="3" name="text" placeholder="Текст сообщения"></textarea>
+                    <button name="send" type="submit">Отправить</button>
+                </form>
+            </div>
+
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                Подвал сайта
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+
+</body>
 </html>
