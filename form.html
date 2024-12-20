@@ -26,10 +26,11 @@ function handleSubmit(event) {
     let data = Object.fromEntries(formData);
     let jsonData = JSON.stringify(data);
 
-    fetch('https://script.google.com/macros/s/AKfycbyjHa9HwNJ1yTU4tkmPKVnPxnZy_suMBVptimQfwwiD1O0cXJWej7LBnaI8mpO2mPlvig/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwB41oXWzLvrGHvn7R2WLbceJWZc9Gc6Eg5cP1pM-8_ezR1M4R6YXq7WxKdDa5Ag7169g/exec', {
         method: 'POST',
         headers: {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json',
+            
         },
         body: jsonData
     }).then(res => res.json())
