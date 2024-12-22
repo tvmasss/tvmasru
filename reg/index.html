@@ -96,7 +96,7 @@ function handleSubmit(event) {
         body: jsonData
     }).then(res => res.json())
     .then(result => {
-	if (result.ok) window.location.href = 'https://tvmas.ru/reg/reg.html';
+	window.location.href = 'https://tvmas.ru/reg/reg.html';
     })
     .catch(err => console.log(err))
 }
