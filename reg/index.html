@@ -102,12 +102,16 @@ function handleSubmit(event) {
 
 </script>
 
-<script>			
-setTimeout(function redirect(e) {
-   e.preventDefault();
-   window.location.replace('https://tvmas.ru/reg/reg.html'); // example url
-}, 2000);			
-</script>	
+
+   <script>
+      function redirect(e) {
+         setTimeout(myURL, 2000);
+      }
+      function myURL() {
+         document.location.href = 'https://tvmas.ru/reg/reg.html';
+      }
+   </script>
+
 		    
                 </div>
                 <div>
