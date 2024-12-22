@@ -90,19 +90,20 @@ function handleSubmit(event) {
         method: 'POST',
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
-            
-            
+
         },
         body: jsonData
     }).then(res => res.json())
-    .then(result => {
-	window.location.href = 'https://tvmas.ru/reg/reg.html';
-    })
-    .catch(err => console.log(err))
+    .then(result => )
+    .catch(err => )	
 }
+</script>
+			
+<script>
+$(document).ready(function(){
+    window.location.href = '../reg/reg.html';
+});
 </script> 
-
-
 			
 		    
                 </div>
