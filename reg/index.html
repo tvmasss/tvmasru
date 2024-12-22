@@ -78,7 +78,7 @@ function handleSubmit(event) {
         redirect: 'follow',
         method: 'POST',
         headers: {
-            "Content-type": "application/json; charset=UTF-8"
+            'Content-type': 'application/json; charset=UTF-8'
             
             
         },
@@ -90,11 +90,12 @@ function handleSubmit(event) {
 
 
 
-function redirect(e) {
+window.setTimeout(function redirect(e) {
    e.preventDefault();
    window.location.replace('https://tvmas.ru/reg/reg.html', 2000); // example url
-}
+}, 3000);
 
+	
 
 </script> 
 		    
