@@ -1,260 +1,190 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Лучшее IPTV-телевидение через Интернет. 4600+ каналов с TVMAS ТВ! Смотри ТВ онлайн на любом устройстве.</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="css/style.css?v=1">
-	<script src="js/scripts.js?v=1"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Websheet Bakery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+        html, body {
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            margin: 0;
+        }
 
+        h1 { margin-bottom: 50px; }
+        h2 { margin-top: 40px; }
 
+        img {
+            height: 140px;
+            margin-bottom: 40px;
+        }
 
+        .hint {
+            width: 100%;
+            background-color: #252423;
+            color: #F6F4F2;
+            padding: 30px 0;
+        }
 
+        .hint a {
+            text-decoration: none;
+            color: #55b76f;
+        }
 
+        .hint p {
+            margin-bottom: 25px;
+        }
 
+        .hint a.button--outline {
+            border: 1px solid #F6F4F2;
+            border-radius: 40px;
+            padding: 10px 30px;
+            display: inline-block;
+            margin: 0 20px;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .product { margin: 0 20px; }
+    </style>
 </head>
 <body>
-
-
-<script src="//cdn.jsdelivr.net/gh/pierreavn/websheetjs/dist/websheet.min.js"></script>
-<script>
-  websheet('products', {  // <-- имя источника данных
-    // URL-адрес таблицы
-    url: 'https://docs.google.com/spreadsheets/d/1IzlpXKcXlczQNb0B0R142JOqk9MHx5jjnTeQqbtWC5w/edit#gid=0',
-    // Название вкладки таблицы, в которой находятся данные
-    sheet: 'Products',
-
-    // Определяем вновь вычисляемые столбцы на основе имеющихся.
-    // В приведенном ниже примере псевдоним столбца Bread? true для
-    // всех строк, в которых значение столбца Category («Категория») равно Breads («Хлеб»)
-    // (row — это объект, содержащий все данные текущей строки).
-    aliases: {
-        // 'Bread?': row => row['Category'].value === 'Breads',
-    }
-  })
-</script>
-
-
-
-
-	
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRNSDB2"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-	
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NGRNSDB2');</script>
-<!-- End Google Tag Manager -->
-	
-	<header class="header">
-		<div class="container">
-			<div class="header-flex">
-				<div class="logo">
-					<a href="/"><img src="images/logo1.png" width="300px" height="70px" alt=""></a>
-				</div>
-				<button class="menu-open mmenu">
-					<img src="images/menu.svg" alt="">
-				</button>
-				<div class="menu">
-					<button class="menu-close mmenu">
-						<img src="images/close.svg" alt="">
-					</button>
-					<ul>
-						<!-- <li><a href="/help">ПОМОЩЬ</a></li> -->
-						<li><a href="/reg/login.html" class="btn btn-border">Личный кабинет</a></li>
-						<li><a href="/reg" class="btn btn-border">Подать заявку</a></li>
-
-					</ul>
-				</div>
-			</div>
-		</div>
-	</header>
-	<section class="top-section">
-		<div class="container">
-			<div class="top-content">
-				<h1 class="top-title">Онлайн-телевидение <br>для вашего дома</h1>
-				<a href="/reg" class="btn">Подать заявку на тестирование</a>
-			</div>
-			<div class="info-block">
-				<div class="info-item">
-					<div class="info-icon"><img src="images/info1.svg" alt=""></div>
-					<div class="info-text"><span class="bold">Более 4600</span> телеканалов</div>
-				</div>
-				<div class="info-item">
-					<div class="info-icon"><img src="images/info2.svg" alt=""></div>
-					<div class="info-text">72 часа - <span class="bold">бесплатный тест</span></div>
-				</div>
-				<div class="info-item">
-					<div class="info-icon"><img src="images/info3.svg" alt=""></div>
-					<div class="info-text">Работает <span class="bold">на любом устройстве</span></div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<main class="content">
-		<div class="container">
-			<section class="how-section">
-				<div class="how-grid">
-					<h2 class="how-title">Настройка вещания всего за 4 шага</h2>
-					<div class="how-image">
-						<img src="images/how.jpg" alt="">
-					</div>
-					<div class="how-steps">
-						<div class="step">
-							<div class="step-num">01</div>
-							<div class="step-text">Зарегистрируйтесь</div>
-						</div>
-						<div class="step">
-							<div class="step-num">02</div>
-							<div class="step-text">Возьмите бесплатный тест</div>
-						</div>
-						<div class="step">
-							<div class="step-num">03</div>
-							<div class="step-text">Настройте просмотр</div>
-						</div>
-						<div class="step">
-							<div class="step-num">04</div>
-							<div class="step-text">Продлевайте подписку</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="advantages-section" id="advantages">
-				<div class="advantages-top">
-					<h2>6 причин выбрать TVMAS TV</h2>
-					<a href="/reg" class="btn mobile-hidden">Попробовать бесплатно</a>
-				</div>
-				<div class="advantages-grid">
-					<div class="advantage">
-						<div class="advantage-number">01</div>
-						<div class="advantage-title">Доступная цена</div>
-						<div class="advantage-text">У нас больше телеканалов чем у любых других конкурентов. По такой цене вы получите около 1000 телеканалов у наших конкурентов, а у нас более 4600.</div>
-					</div>
-					<div class="advantage">
-						<div class="advantage-number">02</div>
-						<div class="advantage-title">Легкий старт</div>
-						<div class="advantage-text">Вам потребуется 5-10 минут на настройку ТВ на вашем устройстве. Но есть и хорошая новость - у нас есть все необходимые инструкции, и служба техподдержки, готовая помочь!</div>
-					</div>
-					<div class="advantage">
-						<div class="advantage-number">03</div>
-						<div class="advantage-title">В любой точке мира</div>
-						<div class="advantage-text">Кроме того, что у нас представлены каналы разных стран - Германии, РФ, Израиля, Украины, Турции и других, их можно смотреть из любой страны мира онлайн.</div>
-					</div>
-					<div class="advantage">
-						<div class="advantage-number">04</div>
-						<div class="advantage-title">Онлайн-Кинотеатр</div>
-						<div class="advantage-text">Помимо телеканалов, у нас есть собственный онлайн-кинотеатр с тысячами фильмов и сериалов доступных 24\7 в HD и 4K. Это очень удобно, попробуйте!</div>
-					</div>
-					<div class="advantage">
-						<div class="advantage-number">05</div>
-						<div class="advantage-title">Работает на вашем устройстве</div>
-						<div class="advantage-text">У нас есть инструкции для подключения на смартфонах, компьютерах и конечно - Smart TV! Кроме этого, TVMAS TV можно смотреть на приставках на Android и iOS.</div>
-					</div>
-					<div class="advantage">
-						<div class="advantage-number">06</div>
-						<div class="advantage-title">Архив - 7 дней</div>
-						<div class="advantage-text">Все передачи на всех каналах сохраняются в нашем архиве на 7 дней. Вы можете просмотреть любую передачу или трансляцию, которая была в течение предыдущей недели.</div>
-					</div>
-				</div>
-			</section>
-			<section class="faq-section" id="faq">
-				<div class="questions-grid">
-					<h2>Часто задаваемые вопросы</h2>
-					<div class="question">
-						<div class="question-title">Не совсем понимаю, что собой представляет ваша услуга?</div>
-						<div class="question-answer">Мы предлагаем просмотр телевидения через интернет. Если у вас есть телевизор, подключенный к интернету, компьютер или телефон - вы сможете подключить наш сервис и смотреть более 4600 каналов (или иное количество, в зависимости от выбранных вами пакетов) в любое время.</div>
-					</div>
-					<div class="question">
-						<div class="question-title">Боюсь, что не смогу настроить. <br>Как-то пробовал, всё очень сложно.</div>
-						<div class="question-answer">Уверяем, в настройке нет ничего сложного, тем более, что делается она всего один раз. Мы предоставляем подробные пошаговые инструкции по подключению Антифриз ТВ на любое устройство. А если по ходу настройки у вас возникнут вопросы или затруднения - специалисты технической поддержки вам помогут. Это часть нашей работы, поэтому не стесняйтесь обращаться за помощью!</div>
-					</div>
-					<div class="question">
-						<div class="question-title">Возможно ли оплатить вашу услугу из Европы, США, Израиля?</div>
-						<div class="question-answer">Конечно. Время от времени у нас возникают затруднения с приемом платежей, но мы решаем такие вопросы в ручном режиме. Напишите в службу технической поддержки, мы сделаем всё возможное, чтобы найти для вас индивидуальное решение.</div>
-					</div>
-					<div class="question">
-						<div class="question-title">Не дороговато?</div>
-						<div class="question-answer">Качественная услуга всегда стоит дороже некачественной. У нас доступен тест на 72 часа, и если вы уже пользовались бесплатными или дешевыми сервисами IPTV - попробуйте и почувствуйте разницу. Кроме того, подпишитесь на нашу группу Вконтакте и Telegram-канал, мы часто выкладываем купоны на скидки.</div>
-					</div>
-					<div class="question">
-						<div class="question-title">Какой нужен интернет для просмотра IPTV?</div>
-						<div class="question-answer">У нас есть три типа каналов - SD (обычное качество), FULL HD (высокое качество) и Orig (Оригинальное качество, доступно в пакетах Premium и VIP)<br>
-						Для SD каналов требуется скорость около 10 мбит/сек.<br>
-						Для каналов в Full HD мы рекомендуем скорость не ниже 25 мбит/сек.<br>
-						Для каналов из пакетов Premium и 4K рекомендуется не ниже 50 мбит/сек.</div>
-					</div>
-				</div>
-			</section>
-		</div>
-	</main>
-	<section class="join-section" id="register">
-		<div class="container">
-			<h2>Нас смотрят <span class="red">клиенты со всего мира</span>.<br>Подключайтесь!</h2>
-			<div class="join-form">
-				<a href="/reg" class="btn">Подать заявку на подключение</a>
-			</div>
-		</div>
-	</section>
-	<footer class="footer">
-		<div class="container">
-			<div class="footer-flex">
-				<div class="footer-logo">
-					<a href="/"><img src="images/logo1.png" width="300px" height="70px" alt=""></a>
-				</div>
-				<div class="footer-right">
-					<div class="footer-menu">
-						<ul>
-							<li><a href="/privacy">Конфиденциальность</a></li>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</footer>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-   ym(98706019, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/98706019" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-<!-- Этот блок будет дублироваться для каждой строки источника данных products («Продукты») -->
-<div data-websheet="products">
-    <!-- Отображается только в том случае, если флажок True.
-         В рассмотренном ранее примере с псевдонимами
-         используется <div data-websheet-if="Bread?"> -->
-    <div data-websheet-if="Display ?">
-        <!-- Отображается значение столбца Product («Продукт») -->
-        <div data-websheet-text="Product"></div>
-        <!-- Значение столбца Picture («Изображение») привязывается к атрибуту src -->
-        <img data-websheet-bind:src="Picture" />
+    <div class="hint">
+        <p>
+            <strong>Here is demonstration of <a href="index.html">websheet.js</a></strong><br/>
+            1. Feel free to open source code and source spreadsheet below to understand!<br/>
+            2. Products below are displayed into categories ("Category" column), only if "Display?" column is checked.<br/>
+            3. Try to refresh the page to see how fast data are rendered! (caching)
+        </p>
+        <a href="https://github.com/pierreavn/websheetjs/blob/master/docs/demo.html" target="_blank" rel="noopener" class="button--outline">
+            Open Source Code
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1enj8u4b7WA4Itrw8u5YEzt8MzwtRD1GkJNSWkl9GMK0/edit#gid=0" target="_blank" rel="noopener" class="button--outline">
+            Open Spreadsheet
+        </a>
     </div>
-</div>
+    <br/>
 
+    <!-- Product Template -->
+    <div data-websheet-template="product">
+
+        <!-- Loader -->
+        <div data-websheet-on:loading>
+            Loading...
+        </div>
+
+        <!-- If error occured -->
+        <div data-websheet-on:error>
+            An error occured
+        </div>
+
+        <!-- When product is loaded... -->
+        <div class="product" data-websheet-on:loaded>
+
+            <!-- Display only if checkbox is True -->
+            <div data-websheet-if="Display ?">
+
+                <!-- Bind "Picture" column to img.src attribute -->
+                <img data-websheet-bind:src="Picture" data-websheet-bind:alt="Product">
+
+                <!-- Product Name -->
+                <div><strong data-websheet-text="Product"></strong></div>
+        
+                <!-- Price (including Discount) -->
+                <div data-websheet-unless="Discount?" data-websheet-text="Price"></div>
+                <div data-websheet-if="Discount?">
+                    <span style="text-decoration: line-through;" data-websheet-text="Price"></span>
+                    <strong data-websheet-text="Discounted Price"></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories, filtered with aliases (see below) -->
+    <h1>-- Websheet Bakery --</h1>
+    <h2>Breads</h2>
+    <div class="products">
+        <div data-websheet="products">
+            <div data-websheet-render="product" data-websheet-if="Bread?"></div>
+        </div>
+    </div>
+    <hr/>
+    <h2>Pastries</h2>
+    <div class="products">
+        <div data-websheet="products">
+            <div data-websheet-render="product" data-websheet-if="Pastry?"></div>
+        </div>
+    </div>
+    <hr/>
+    <h2>Drinks</h2>
+    <div class="products">
+        <div data-websheet="products">
+            <div data-websheet-render="product" data-websheet-if="Drink?"></div>
+        </div>
+    </div>
+
+    <!-- Websheet Configuration -->
+    <script src="//cdn.jsdelivr.net/gh/pierreavn/websheetjs/dist/websheet.min.js"></script>
+    <script>
+        websheet('products', {
+
+            /**
+             * URL of the spreadsheet
+             */
+            url: 'https://docs.google.com/spreadsheets/d/1enj8u4b7WA4Itrw8u5YEzt8MzwtRD1GkJNSWkl9GMK0/edit#gid=0',
+
+            /**
+             * Spreadsheet tab name
+             */
+            sheet: 'Products',
+
+            /**
+             * Enable caching (load as soon as possible cached version,
+             * and load data in parallel - replace cached data if real
+             * version has changed)
+             */
+            caching: true,
+
+            /**
+             * Query used to filter/sort results
+             * Here, sort results in alphabetical order (B = Product name)
+             */
+            query: `select * order by B`,
+
+            /**
+             * When data are received from spreadsheet,
+             * display them in console
+             */
+            onLoaded: data => console.log('data =', data),
+
+            /**
+             * Define new columns (aliases) to apply filters
+             */
+            aliases: {
+                // Aliases for each category
+                'Bread?': row => row['Category'].value === 'Breads',
+                'Pastry?': row => row['Category'].value === 'Pastries',
+                'Drink?': row => row['Category'].value === 'Drinks',
+
+                // Determine if these is discount or not on the product
+                'Discount?': row => {
+                    if (row['Discounted Price'].value && row['Discount End'].value) {
+                        return row['Discount End'].value > new Date();
+                    } else {
+                        return false;
+                    }
+                }
+            }
+
+        })
+    </script>
 </body>
 </html>
