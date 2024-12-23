@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/style.css?v=1">
 	<script src="js/scripts.js?v=1"></script>
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -20,6 +21,29 @@
 </head>
 <body>
 
+
+<script src="//cdn.jsdelivr.net/gh/pierreavn/websheetjs/dist/websheet.min.js"></script>
+<script>
+  websheet('products', {  // <-- имя источника данных
+    // URL-адрес таблицы
+    url: 'https://docs.google.com/spreadsheets/d/1IzlpXKcXlczQNb0B0R142JOqk9MHx5jjnTeQqbtWC5w/edit#gid=0',
+    // Название вкладки таблицы, в которой находятся данные
+    sheet: 'Products',
+
+    // Определяем вновь вычисляемые столбцы на основе имеющихся.
+    // В приведенном ниже примере псевдоним столбца Bread? true для
+    // всех строк, в которых значение столбца Category («Категория») равно Breads («Хлеб»)
+    // (row — это объект, содержащий все данные текущей строки).
+    aliases: {
+        // 'Bread?': row => row['Category'].value === 'Breads',
+    }
+  })
+</script>
+
+
+
+
+	
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRNSDB2"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -219,7 +243,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><div><img src="https://mc.yandex.ru/watch/98706019" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-
+<!-- Этот блок будет дублироваться для каждой строки источника данных products («Продукты») -->
+<div data-websheet="products">
+    <!-- Отображается только в том случае, если флажок True.
+         В рассмотренном ранее примере с псевдонимами
+         используется <div data-websheet-if="Bread?"> -->
+    <div data-websheet-if="Display ?">
+        <!-- Отображается значение столбца Product («Продукт») -->
+        <div data-websheet-text="Product"></div>
+        <!-- Значение столбца Picture («Изображение») привязывается к атрибуту src -->
+        <img data-websheet-bind:src="Picture" />
+    </div>
+</div>
 
 </body>
 </html>
