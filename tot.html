@@ -57,121 +57,33 @@
     </style>
 </head>
 <body>
-
-    <br/>
-
-    <!-- Product Template -->
-    <div data-websheet-template="product">
-
-        <!-- Loader -->
-        <div data-websheet-on:loading>
-            Loading...
-        </div>
-
-        <!-- If error occured -->
-        <div data-websheet-on:error>
-            An error occured
-        </div>
-
-        <!-- When product is loaded... -->
-        <div class="product" data-websheet-on:loaded>
-
-            <!-- Display only if checkbox is True -->
-            <div data-websheet-if="Display ?">
-
-                <!-- Bind "Picture" column to img.src attribute -->
-                <img data-websheet-bind:src="Picture" data-websheet-bind:alt="Product">
-
-                <!-- Product Name -->
-                <div><strong data-websheet-text="Product"></strong></div>
-        
-                <!-- Price (including Discount) -->
-                <div data-websheet-unless="Discount?" data-websheet-text="Price"></div>
-                <div data-websheet-if="Discount?">
-                    <span style="text-decoration: line-through;" data-websheet-text="Price"></span>
-                    <strong data-websheet-text="Discounted Price"></strong>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Categories, filtered with aliases (see below) -->
-    <h1>-- Websheet Bakery --</h1>
-    <h2>Breads</h2>
-    <div class="products">
-        <div data-websheet="products">
-            <div data-websheet-render="product" data-websheet-if="Bread?"></div>
-        </div>
-    </div>
-    <hr/>
-    <h2>Pastries</h2>
-    <div class="products">
-        <div data-websheet="products">
-            <div data-websheet-render="product" data-websheet-if="Pastry?"></div>
-        </div>
-    </div>
-    <hr/>
-    <h2>Drinks</h2>
-    <div class="products">
-        <div data-websheet="products">
-            <div data-websheet-render="product" data-websheet-if="Drink?"></div>
-        </div>
-    </div>
-
-    <!-- Websheet Configuration -->
-    <script src="//cdn.jsdelivr.net/gh/pierreavn/websheetjs/dist/websheet.min.js"></script>
-    <script>
-        websheet('products', {
-
-            /**
-             * URL of the spreadsheet
-             */
-            url: 'https://docs.google.com/spreadsheets/d/1fRsip0V8xjB638OtqpvmMG5TXqPlryOzaaw-TEgDmoU/edit#gid=0',
-
-            /**
-             * Spreadsheet tab name
-             */
-            sheet: 'Products',
-
-            /**
-             * Enable caching (load as soon as possible cached version,
-             * and load data in parallel - replace cached data if real
-             * version has changed)
-             */
-            caching: true,
-
-            /**
-             * Query used to filter/sort results
-             * Here, sort results in alphabetical order (B = Product name)
-             */
-            query: `select * order by B`,
-
-            /**
-             * When data are received from spreadsheet,
-             * display them in console
-             */
-            onLoaded: data => console.log('data =', data),
-
-            /**
-             * Define new columns (aliases) to apply filters
-             */
-            aliases: {
-                // Aliases for each category
-                'Bread?': row => row['Category'].value === 'Breads',
-                'Pastry?': row => row['Category'].value === 'Pastries',
-                'Drink?': row => row['Category'].value === 'Drinks',
-
-                // Determine if these is discount or not on the product
-                'Discount?': row => {
-                    if (row['Discounted Price'].value && row['Discount End'].value) {
-                        return row['Discount End'].value > new Date();
-                    } else {
-                        return false;
-                    }
-                }
+<script>
+(function () {
+   var app = "https://script.google.com/macros/s/AKfycbzngb-5a3tDdHJ445o5LxqeN63V_ihhF_Nxlkz3gxLyMeG3MA/exec",
+      output = '',
+      xhr = new XMLHttpRequest();
+   xhr.open('GET', app);
+   xhr.onreadystatechange = function() {
+     if (xhr.readyState !== 4) return;
+     if (xhr.status == 200) {
+        try {
+            var r = JSON.parse(xhr.responseText),
+               result = r["result"];
+            for (var i = 0; i < result.length; i++){
+                  var obj = r["result"][i];
+                  output += obj.join("<br/>") + "<br/><hr/>";
             }
-
-        })
+        } catch(e) {}
+     } 
+     
+   document.getElementById('info').innerHTML = output;
+   }
+   xhr.send()
+})()
     </script>
+
+
+<div id="info"></div>
+    
 </body>
 </html>
