@@ -7,16 +7,24 @@
 
   <script>
 
-const data = `{"users":[
-  {"name":"Shyam", "login":"shyamjaiswal"},  
-  {"name":"Bob", "login":"bob32"},  
-  {"name":"Jai", "login":"jai87"}  
-]}`;
-// парсим данные
-const parsedData = JSON.parse(data);
-console.log(parsedData.users[1].name);
+const json = `[
+  {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz"
+  },
+  {
+    "id": 2,
+    "name": "Ervin Howell",
+    "username": "Antonette",
+    "email": "Shanna@melissa.tv"
+  }
+]`;
 
-    
+const users = JSON.parse(json);
+
+console.log(users[1].name); 
   </script>
 
 
