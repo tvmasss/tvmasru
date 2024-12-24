@@ -25,9 +25,12 @@ const json = `[
 const users = JSON.parse(json);
 
 console.log(users[1].name); 
+
+document.getElementById("name").innerHTML = users[1].name;
+ 
   </script>
 
-
+<h1 id="time">Итог - <div id="name"></div> </h1>     
 
   
 
