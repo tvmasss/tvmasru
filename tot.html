@@ -6,29 +6,25 @@
 <body>
 
   <script>
-function getElement(id) {
-  return document.getElementById(id);
-}
 
-fetch('https://script.google.com/macros/s/AKfycbzPx02VSFiEAADf28IYilQPb1Gwa94_6Kikkyp_Wz4mK9y63ak5isxIQdTEdM-6TOQ/exec')
-.then(res => res.json())
-.then((res) => {
-  const data = res.data;
-  getElement('name').innerHTML =  '3: ' + data.name;
-  getElement('symbol').innerHTML = 'Symbol: ' + data.symbol;
-  getElement('rank').innerHTML = 'Rank: ' + data.rank;
-  getElement('price').innerHTML = 'Price: ' + data.quotes.USD.price;
-  // do the rest here
-});
+const data = `{"users":[
+  {"name":"Shyam", "login":"shyamjaiswal"},  
+  {"name":"Bob", "login":"bob32"},  
+  {"name":"Jai", "login":"jai87"}  
+]}`;
+// парсим данные
+const parsedData = JSON.parse(data);
+console.log(parsedData.users[1].name);
+
+    
   </script>
 
 
-<div>
+
+  
+
   <p id="name"></p>
-  <p id="symbol"></p>
-  <p id="rank"></p>
-  <p id="price"></p>
-</div>
+
 
   
 </body>
