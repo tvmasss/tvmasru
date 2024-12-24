@@ -1,89 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Websheet Bakery</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<title>Sample Page</title>
 
-        html, body {
-            font-family: 'Lato', sans-serif;
-            text-align: center;
-            margin: 0;
-        }
+<script>
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://script.google.com/macros/s/AKfycbzPx02VSFiEAADf28IYilQPb1Gwa94_6Kikkyp_Wz4mK9y63ak5isxIQdTEdM-6TOQ/exec",
+  "method": "GET"
+}
 
-        h1 { margin-bottom: 50px; }
-        h2 { margin-top: 40px; }
+$.ajax(settings).done(function (response) {
+  console.log(response);
 
-        img {
-            height: 140px;
-            margin-bottom: 40px;
-        }
+  var content = result.1;
+  $("#windSpeed").append(content);
 
-        .hint {
-            width: 100%;
-            background-color: #252423;
-            color: #F6F4F2;
-            padding: 30px 0;
-        }
+  var currentWeather = response.result[2];
+  $("#currentWeather").append(currentWeather);
 
-        .hint a {
-            text-decoration: none;
-            color: #55b76f;
-        }
-
-        .hint p {
-            margin-bottom: 25px;
-        }
-
-        .hint a.button--outline {
-            border: 1px solid #F6F4F2;
-            border-radius: 40px;
-            padding: 10px 30px;
-            display: inline-block;
-            margin: 0 20px;
-        }
-
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-            justify-content: center;
-            margin: 30px 0;
-        }
-
-        .product { margin: 0 20px; }
-    </style>
+});
+</script>
 </head>
 <body>
-<script>
-(function () {
-   var app = "https://script.google.com/macros/s/AKfycbzPx02VSFiEAADf28IYilQPb1Gwa94_6Kikkyp_Wz4mK9y63ak5isxIQdTEdM-6TOQ/exec",
-      output = '',
-      xhr = new XMLHttpRequest();
-   xhr.open('GET', app);
-   xhr.onreadystatechange = function() {
-     if (xhr.readyState !== 4) return;
-     if (xhr.status == 200) {
-        try {
-            var r = JSON.parse(xhr.responseText),
-               result = r["result"];
-            for (var i = 0; i < result.length; i++){
-                  var obj = r["result"][i];
-                  output += obj.join("<br/>") + "<br/><hr/>";
-            }
-        } catch(e) {}
-     } 
-     
-   document.getElementById('info').innerHTML = output;
-   }
-   xhr.send()
-})()
-    </script>
+<h1>Sample Page</h1>
 
+<div id="windSpeed">Wind speed: </div>
+<div id="currentWeather">Current weather conditions: </div>
 
-<div id="info"></div>
-    
 </body>
 </html>
