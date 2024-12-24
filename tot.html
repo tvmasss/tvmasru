@@ -2,35 +2,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <title>Sample Page</title>
+<body>
 
-<script>
-var settings = {
-  "async": true,
-  "mode": "no-cors",
-  "crossDomain": true,
-  "url": "https://script.google.com/macros/s/AKfycbzPx02VSFiEAADf28IYilQPb1Gwa94_6Kikkyp_Wz4mK9y63ak5isxIQdTEdM-6TOQ/exec",
-  "method": "GET"
+  <script>
+function getElement(id) {
+  return document.getElementById(id);
 }
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-
-  var content = result.1;
-  $("#windSpeed").append(content);
-
-  var currentWeather = response.result[2];
-  $("#currentWeather").append(currentWeather);
-
+fetch('https://script.google.com/macros/s/AKfycbzPx02VSFiEAADf28IYilQPb1Gwa94_6Kikkyp_Wz4mK9y63ak5isxIQdTEdM-6TOQ/exec')
+.then(res => res.json())
+.then((res) => {
+  const data = res.data;
+  getElement('name').innerHTML =  '3: ' + data.name;
+  getElement('symbol').innerHTML = 'Symbol: ' + data.symbol;
+  getElement('rank').innerHTML = 'Rank: ' + data.rank;
+  getElement('price').innerHTML = 'Price: ' + data.quotes.USD.price;
+  // do the rest here
 });
-</script>
-</head>
-<body>
-<h1>Sample Page</h1>
+  </script>
 
-<div id="windSpeed">Wind speed: </div>
-<div id="currentWeather">Current weather conditions: </div>
 
+<div>
+  <p id="name"></p>
+  <p id="symbol"></p>
+  <p id="rank"></p>
+  <p id="price"></p>
+</div>
+
+  
 </body>
 </html>
