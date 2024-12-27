@@ -9,9 +9,9 @@
 
     <script>
 function Setup() {
-    var URL = 'https://tvmas.ru/currentprice.json';
 
-    fetch(URL)
+
+    fetch('https://tvmas.ru/currentprice.json')
         .then(res => res.json())
         .then(data => {
             console.log(data);  // This shows the JSON object in the console
