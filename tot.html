@@ -17,7 +17,7 @@
     </div>
   </div>
 <script id="jsbin-javascript">
-fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+fetch("./currentprice.json")
   .then(resp => resp.json())
   .then((data) => {
     const { bpi } = data;
