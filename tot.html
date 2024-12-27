@@ -1,32 +1,42 @@
-<!DOCTYPE html> 
-<html> 
-	<head> 
-    <title>Google Spreadsheet Javascript</title> 
-    <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="google-spreadsheet.js"></script>
-    <style>
-      body{
-        background-color: black;
-        color: green;
-        font-size: .8em;
-        font-family: sans-serif;
-      }
-      h1,a{ color: yellow}
-      input{
-        font-size: .8em;
-        background-color: black;
-        color:white;
-      }
-    </style>
-  </head> 
-  <body> 
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
 
-<script>
-fetch('https://script.google.com/macros/s/AKfycbzA6-xMzfHsyrP-ufsMsnf5K0iEME9L7TVOYEa-WH0HSCozxyHt22xLSU3OLSCPsK_r/exec')
-    .then((response) => response.json())
-    .then((json) => console.log(json));
-	
-</script>	  
+Copyright (c) 2024 by anonymous (http://jsbin.com/xupeyugebu/1/edit)
 
-  </body>
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Price</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Цена из json" readonly>
+    <div class="input-group-append">
+      <span class="input-group-text">USD</span>
+    </div>
+  </div>
+<script id="jsbin-javascript">
+fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+  .then(resp => resp.json())
+  .then((data) => {
+    const { bpi } = data;
+    if (!bpi) return;
+    const { USD } = bpi;
+    if (!USD) return;
+    document.querySelectorAll(".currency-USD").forEach((node) => {
+      node.value = USD.rate_float;
+    });
+  });
+
+</script>
+</body>
 </html>
