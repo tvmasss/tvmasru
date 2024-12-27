@@ -17,10 +17,11 @@ function Setup() {
             console.log(data);  // This shows the JSON object in the console
 
             // To display just the name in the textbox
-            document.getElementById("JSON_Text").value = data.name;
+            document.getElementById("JSON_Text").value = JSON.stringify(data);
 
             // Or, if you want to show the whole JSON object as a string:
             // document.getElementById("JSON_Text").value = JSON.stringify(data);
+		// document.getElementById("JSON_Text").value = data.name;
         });
 }
 
