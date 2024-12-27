@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Price List</title>
+	  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+	</head>
+	<body>
+
+    <script>
+function Setup() {
+    var URL = 'https://script.google.com/macros/s/AKfycbyomOiQONIcjjvekmP9munz8DgeKSoUFB70Q39bKSMN9r8aVKGwo_0ULDhzANo21bEYNw/exec';
+
+    fetch(URL)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);  // This shows the JSON object in the console
+
+            // To display just the name in the textbox
+            document.getElementById("JSON_Text").value = data.name;
+
+            // Or, if you want to show the whole JSON object as a string:
+            // document.getElementById("JSON_Text").value = JSON.stringify(data);
+        });
+}
+
+    </script>
+    
+</body>
+</html>
