@@ -9,9 +9,9 @@
     <script>
 
 function Setup() {
-    const URL = 'https://tvmas.ru/currentprice.json';
 
-    fetch(URL)
+
+    fetch('https://tvmas.ru/currentprice.json')
         .then(res => { return res.data() })
         .then(data => { document.getElementById("JSON_Text").value = data.name });
 });
